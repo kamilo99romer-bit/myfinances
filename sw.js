@@ -1,8 +1,8 @@
-// MyFinance Service Worker
+// MyFinance Service Worker - Protegido con Login
 const CACHE_NAME = 'myfinance-v1';
 const urlsToCache = [
     '.',
-    './Finanzas_Modificado.html',
+    './index.html',
     './manifest.json'
 ];
 
