@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#000000">
-    <link rel="manifest" href="manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Finanzas">
-    <title>MyFinance</title>
+    <title>Finanzas - Control Total</title>
     <style>
         * {
             margin: 0;
@@ -1222,121 +1218,7 @@
 .seccion {
     margin-bottom: 30px;
     display: flex;
-    flex-direction: column;
     gap: 20px;
-}
-
-.tabla-header-con-boton {
-    display: flex;
-    align-items: center;
-    background: var(--surface-light);
-    border-bottom: 1px solid var(--border);
-    position: relative;
-}
-
-.titulo-tabla {
-    flex: 1;
-    padding: 12px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.titulo-tabla.editable {
-    cursor: text;
-    outline: none;
-    transition: background 0.2s;
-}
-
-.titulo-tabla.editable:hover {
-    background: var(--border);
-}
-
-.titulo-tabla.editable:focus {
-    background: var(--bg);
-    box-shadow: inset 0 0 0 2px var(--text);
-}
-
-.btn-eliminar-object {
-    width: 40px;
-    height: 40px;
-    background: var(--expense);
-    border: none;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.2s;
-}
-
-.btn-eliminar-object:hover {
-    opacity: 0.8;
-}
-
-.fila-total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px;
-    background: var(--surface-light);
-    border-top: 1px solid var(--border);
-    font-weight: 600;
-}
-
-.celda-total-label {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.celda-total-valor {
-    font-size: 1.2rem;
-    font-weight: 700;
-}
-
-.seccion-deficit {
-    margin: 30px 0;
-    border: 2px solid var(--text);
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.tabla-deficit {
-    background: var(--surface);
-}
-
-.deficit-title {
-    background: var(--text);
-    color: var(--bg);
-    font-size: 1rem;
-    letter-spacing: 2px;
-}
-
-.deficit-valor {
-    padding: 20px;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 700;
-}
-
-.celda-total-izquierda, .celda-total-derecha {
-    flex: 1;
-    text-align: center;
-    padding: 12px;
-    font-weight: 600;
-}
-
-.celda-total-derecha input {
-    width: 100%;
-    background: transparent;
-    border: none;
-    color: var(--text);
-    text-align: center;
-    font-weight: 600;
 }
 
 .tabla-principal {
@@ -1363,40 +1245,11 @@
 }
 
 .panel-lateral {
-    width: 100%;
+    width: 160px;
     border: 1px solid var(--border);
     background: var(--surface);
     display: flex;
-    flex-direction: row;
-    gap: 20px;
-    padding: 15px;
-}
-
-.fila-lateral-superior, .fila-lateral-inferior {
-    flex: 1;
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-.fila-lateral-superior input,
-.fila-lateral-inferior span {
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    color: var(--text);
-    font-size: 1.2rem;
-}
-
-.label-lateral {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text);
-    opacity: 0.8;
 }
 
 .btn-nueva-tabla {
@@ -1409,15 +1262,6 @@
 }
 
 </style>
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="MyFinance">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="MyFinance">
-    <meta name="msapplication-TileColor" content="#000000">
-    <meta name="msapplication-tap-highlight" content="no">
 <base target="_blank">
 </head>
 <body>
@@ -1426,14 +1270,15 @@
         <div style="background: var(--surface); padding: 40px; border-radius: 16px; border: 1px solid var(--border); max-width: 400px; width: 90%; text-align: center;">
             <h2 style="margin-bottom: 10px;">🔒 MyFinance</h2>
             <p style="opacity: 0.7; margin-bottom: 20px;">Ingresa la contraseña para continuar</p>
-            <input type="password" id="webPassword" placeholder="Contraseña" style="width: 100%; padding: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; margin-bottom: 15px; text-align: center;">
+            <input type="password" id="webPassword" placeholder="Contraseña" style="width: 100%; padding: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; margin-bottom: 15px; text-align: center;" onkeypress="if(event.key==='Enter')checkWebPassword()">
             <button onclick="checkWebPassword()" style="width: 100%; padding: 12px; background: var(--text); color: var(--bg); border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer;">Entrar</button>
             <p id="loginError" style="color: var(--expense); font-size: 0.85rem; margin-top: 10px; display: none;">Contraseña incorrecta</p>
         </div>
     </div>
 
+    <!-- MAIN APP CONTAINER (inicialmente oculto) -->
     <div id="mainApp" style="display: none;">
-    <div id="mainApp" style="display: none;"><div class="pin-overlay" id="pinOverlay">
+    <div class="pin-overlay" id="pinOverlay">
         <div class="pin-title" id="pinTitle">Ingresa tu PIN</div>
         <div class="pin-display" id="pinDisplay">
             <div class="pin-dot"></div>
@@ -1457,7 +1302,7 @@
         </div>
     </div>
 
-    <div class="header" id="mainHeader"></div>
+    <div class="header" id="mainHeader">
         <div class="date-display">
             <span class="month" id="headerMonth">Enero</span>
             <span class="day" id="headerDay">1</span>
@@ -1597,8 +1442,6 @@
 
     <!-- OBJECTS -->
     <div id="contenedor-objects"></div>
-
-    <div id="contenedor-deficit"></div>
 
     <button class="btn-nueva-tabla" onclick="agregarNuevaTablaObject()">
         + NUEVA TABLA
@@ -3027,12 +2870,7 @@
     
 let tablasData = JSON.parse(localStorage.getItem('finanzas_tablas_v1')) || {
     save: { card: 0, cash: 0, estimate: 0 },
-    objects: [
-        { titulo: 'OBJECT 1', card: 0, cash: 0, total: 0 }
-    ],
-    estimates: [
-        { estimate: 0, gap: 0 }
-    ]
+    objects: []
 };
 
 function calcularSave() {
@@ -3048,24 +2886,14 @@ function calcularSave() {
 
     tablasData.save = { card, cash, estimate };
     guardarTablas();
-    renderDeficitTable();
 }
 
 function agregarNuevaTablaObject() {
-    const objectIndex = tablasData.objects.length + 1;
-
-    // Agregar tabla Object
     tablasData.objects.push({
-        titulo: 'OBJECT ' + objectIndex,
+        titulo: 'OBJECT',
         card: 0,
         cash: 0,
-        total: 0
-    });
-
-    // Agregar tabla Estimate correspondiente
-    tablasData.estimates.push({
-        estimate: 0,
-        gap: 0
+        estimate: 0
     });
 
     renderTablas();
@@ -3077,21 +2905,12 @@ function renderTablas() {
     contenedor.innerHTML = '';
 
     tablasData.objects.forEach((obj, i) => {
-        const est = tablasData.estimates[i] || { estimate: 0, gap: 0 };
         const div = document.createElement('div');
         div.className = 'seccion';
-        div.id = 'object-section-' + i;
 
         div.innerHTML = `
-            <div class="tabla-header-con-boton">
-                <div class="titulo-tabla editable" contenteditable="true" 
-                onblur="updateObjectTitle(${i}, this.innerText)" 
-                onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();}">${obj.titulo}</div>
-                <button class="btn-eliminar-object" onclick="eliminarObject(${i})" title="Eliminar tabla">
-                    🗑️
-                </button>
-            </div>
             <div class="tabla-principal">
+                <div class="titulo-tabla">${obj.titulo}</div>
                 <div class="fila-header">
                     <div class="col-header">CARD</div>
                     <div class="col-header">CASH</div>
@@ -3106,116 +2925,16 @@ function renderTablas() {
                         onchange="updateObject(${i}, 'cash', this.value)">
                     </div>
                 </div>
-                <div class="fila-total">
-                    <div class="celda-total-label">TOTAL</div>
-                    <div class="celda-total-valor" id="object-total-${i}">${obj.total || '0.00'}</div>
-                </div>
-            </div>
-            <div class="panel-lateral">
-                <div class="fila-lateral-superior">
-                    <div class="label-lateral">ESTIMATE</div>
-                    <input type="number" value="${est.estimate}" 
-                    onchange="updateEstimate(${i}, 'estimate', this.value)">
-                </div>
-                <div class="fila-lateral-inferior">
-                    <div class="label-lateral">GAP</div>
-                    <span id="object-gap-${i}">${est.gap || '0.00'}</span>
-                </div>
             </div>
         `;
 
         contenedor.appendChild(div);
-        calcularObjectTotal(i);
     });
-
-    renderDeficitTable();
 }
 
 function updateObject(i, field, value) {
     tablasData.objects[i][field] = parseFloat(value) || 0;
-    calcularObjectTotal(i);
     guardarTablas();
-}
-
-function updateObjectTitle(i, title) {
-    tablasData.objects[i].titulo = title.trim();
-    guardarTablas();
-}
-
-function eliminarObject(i) {
-    if (tablasData.objects.length <= 1) {
-        showToast('Debe mantener al menos una tabla Object');
-        return;
-    }
-
-    if (!confirm('¿Eliminar esta tabla Object?')) return;
-
-    tablasData.objects.splice(i, 1);
-    tablasData.estimates.splice(i, 1);
-
-    guardarTablas();
-    renderTablas();
-    renderDeficitTable();
-    showToast('Tabla eliminada');
-}
-
-function calcularObjectTotal(i) {
-    const obj = tablasData.objects[i];
-    const est = tablasData.estimates[i] || { estimate: 0, gap: 0 };
-
-    const total = (obj.card || 0) + (obj.cash || 0);
-    obj.total = total;
-
-    const gap = (est.estimate || 0) - total;
-    tablasData.estimates[i].gap = gap;
-
-    // Actualizar DOM
-    const totalDiv = document.getElementById('object-total-' + i);
-    const gapSpan = document.getElementById('object-gap-' + i);
-    if (totalDiv) totalDiv.textContent = total.toFixed(2);
-    if (gapSpan) gapSpan.textContent = gap.toFixed(2);
-}
-
-function updateEstimate(i, field, value) {
-    if (!tablasData.estimates[i]) {
-        tablasData.estimates[i] = { estimate: 0, gap: 0 };
-    }
-    tablasData.estimates[i][field] = parseFloat(value) || 0;
-    calcularObjectTotal(i);
-    guardarTablas();
-    renderDeficitTable();
-}
-
-function renderDeficitTable() {
-    let totalDeficit = 0;
-
-    // Sumar todos los gaps de los objects
-    if (tablasData.estimates) {
-        tablasData.estimates.forEach((est) => {
-            totalDeficit += (est.gap || 0);
-        });
-    }
-
-    // Sumar el gap de Save si existe
-    if (tablasData.save) {
-        const saveTotal = (tablasData.save.card || 0) + (tablasData.save.cash || 0);
-        const saveGap = (tablasData.save.estimate || 0) - saveTotal;
-        totalDeficit += saveGap;
-    }
-
-    const contenedor = document.getElementById('contenedor-deficit');
-    if (!contenedor) return;
-
-    contenedor.innerHTML = `
-        <div class="seccion-deficit">
-            <div class="tabla-deficit">
-                <div class="titulo-tabla deficit-title">DEFICIT</div>
-                <div class="deficit-valor ${totalDeficit < 0 ? 'positive-value' : (totalDeficit > 0 ? 'negative-value' : '')}">
-                    ${totalDeficit > 0 ? '+' : ''}${totalDeficit.toFixed(2)}
-                </div>
-            </div>
-        </div>
-    `;
 }
 
 function guardarTablas() {
@@ -3225,46 +2944,18 @@ function guardarTablas() {
 function cargarTablas() {
     if (!tablasData) return;
 
-    document.getElementById('save-card').value = tablasData.save.card || 0;
-    document.getElementById('save-cash').value = tablasData.save.cash || 0;
-    document.getElementById('save-estimate').value = tablasData.save.estimate || 0;
+    document.getElementById('save-card').value = tablasData.save.card;
+    document.getElementById('save-cash').value = tablasData.save.cash;
+    document.getElementById('save-estimate').value = tablasData.save.estimate;
 
     calcularSave();
     renderTablas();
-    renderDeficitTable();
 }
 
 </script>
-    <script>
-        // Registrar Service Worker para funcionalidad offline
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('service-worker.js')
-                    .then((registration) => {
-                        console.log('Service Worker registrado:', registration.scope);
-                    })
-                    .catch((error) => {
-                        console.log('Error al registrar Service Worker:', error);
-                    });
-            });
-        }
-    </script>
-    <!-- Service Worker Registration -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(registration => {
-                        console.log('SW registrado:', registration);
-                    })
-                    .catch(error => {
-                        console.log('SW error:', error);
-                    });
-            });
-        }
-    </script>
-    </div>
+    </div><!-- /mainApp -->
 
+    <!-- LOGIN SCRIPT -->
     <script>
         const WEB_PASSWORD = 'Atreides.*99';
 
@@ -3273,17 +2964,15 @@ function cargarTablas() {
             if (input === WEB_PASSWORD) {
                 document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('mainApp').style.display = 'block';
-                // Inicializar la app normalmente
-                if (typeof initApp === 'function') {
-                    initApp();
-                }
+                // Guardar en sessionStorage para recordar durante la sesión
+                sessionStorage.setItem('webAuth', 'true');
             } else {
                 document.getElementById('loginError').style.display = 'block';
                 document.getElementById('webPassword').value = '';
             }
         }
 
-        // Verificar si ya está logueado (opcional - recordar sesión)
+        // Verificar si ya está logueado al cargar
         if (sessionStorage.getItem('webAuth') === 'true') {
             document.getElementById('loginScreen').style.display = 'none';
             document.getElementById('mainApp').style.display = 'block';
