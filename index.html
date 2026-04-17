@@ -1421,7 +1421,19 @@
 <base target="_blank">
 </head>
 <body>
-    <div class="pin-overlay" id="pinOverlay">
+    <!-- LOGIN SCREEN -->
+    <div id="loginScreen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div style="background: var(--surface); padding: 40px; border-radius: 16px; border: 1px solid var(--border); max-width: 400px; width: 90%; text-align: center;">
+            <h2 style="margin-bottom: 10px;">🔒 MyFinance</h2>
+            <p style="opacity: 0.7; margin-bottom: 20px;">Ingresa la contraseña para continuar</p>
+            <input type="password" id="webPassword" placeholder="Contraseña" style="width: 100%; padding: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; margin-bottom: 15px; text-align: center;">
+            <button onclick="checkWebPassword()" style="width: 100%; padding: 12px; background: var(--text); color: var(--bg); border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer;">Entrar</button>
+            <p id="loginError" style="color: var(--expense); font-size: 0.85rem; margin-top: 10px; display: none;">Contraseña incorrecta</p>
+        </div>
+    </div>
+
+    <div id="mainApp" style="display: none;">
+    <div id="mainApp" style="display: none;"><div class="pin-overlay" id="pinOverlay">
         <div class="pin-title" id="pinTitle">Ingresa tu PIN</div>
         <div class="pin-display" id="pinDisplay">
             <div class="pin-dot"></div>
@@ -1445,7 +1457,7 @@
         </div>
     </div>
 
-    <div class="header" id="mainHeader">
+    <div class="header" id="mainHeader"></div>
         <div class="date-display">
             <span class="month" id="headerMonth">Enero</span>
             <span class="day" id="headerDay">1</span>
@@ -3249,6 +3261,32 @@ function cargarTablas() {
                         console.log('SW error:', error);
                     });
             });
+        }
+    </script>
+    </div>
+
+    <script>
+        const WEB_PASSWORD = 'Atreides.*99';
+
+        function checkWebPassword() {
+            const input = document.getElementById('webPassword').value;
+            if (input === WEB_PASSWORD) {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('mainApp').style.display = 'block';
+                // Inicializar la app normalmente
+                if (typeof initApp === 'function') {
+                    initApp();
+                }
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+                document.getElementById('webPassword').value = '';
+            }
+        }
+
+        // Verificar si ya está logueado (opcional - recordar sesión)
+        if (sessionStorage.getItem('webAuth') === 'true') {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('mainApp').style.display = 'block';
         }
     </script>
 </body>
